@@ -1,21 +1,27 @@
 import React from 'react';
-import { Route } from 'react-router-dom';
+import { Route, Redirect, Switch } from 'react-router-dom';
 import PrivateRoute from './components/PrivateRoute';
 
 import Login from './components/Login';
+import UserProfile from './components/UserProfile';
 
 import './App.css';
 
 function App() {
   return (
     <div className="App">
+      {
+        sessionStorage.getItem('token') ? <Redirect to="/profile" /> : null
+      }
 
+      <Switch>
 
-      <Route exact path="/" component={Login} />
+        <PrivateRoute path="/profile">
+          <UserProfile />
+        </PrivateRoute>
 
-      <PrivateRoute path="/profile">
-
-      </PrivateRoute>
+        <Route component={Login} />
+      </Switch>
     </div>
   );
 }

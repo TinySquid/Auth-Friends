@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 
 import axios from 'axios';
 
-const Login = () => {
+const Login = props => {
   const [inputs, setInputs] = useState({
     username: '',
     password: ''
@@ -24,18 +24,19 @@ const Login = () => {
     axios.post('http://localhost:5000/api/login', inputs)
       .then(response => {
         if (response.data.payload) {
-          localStorage.setItem('token', response.data.payload);
+          sessionStorage.setItem('token', response.data.payload);
+          props.history.push('/profile');
         }
       })
       .catch(error => console.log(error))
-      .finally(() => {
-        setIsLoading(false);
-      });
+    // .finally(() => {
+    //   setIsLoading(false);
+    // });
 
-    setInputs({
-      username: '',
-      password: ''
-    });
+    // setInputs({
+    //   username: '',
+    //   password: ''
+    // });
   }
 
   return (
