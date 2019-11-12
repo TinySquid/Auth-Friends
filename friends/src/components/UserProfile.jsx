@@ -14,7 +14,7 @@ const UserProfile = props => {
   }
 
   return (
-    <>
+    <div className="profile">
       <Nav logout={logout} />
 
       <PrivateRoute exact path="/profile">
@@ -24,7 +24,7 @@ const UserProfile = props => {
       <PrivateRoute exact path="/profile/addfriend">
         <AddFriend />
       </PrivateRoute>
-    </>
+    </div>
   )
 }
 

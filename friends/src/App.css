@@ -31,3 +31,19 @@
   height: 2rem;
   font-size: .8rem;
 }
+
+.nav {
+  margin: 1rem;
+  border: 1px solid black;
+}
+
+.nav button {
+  width: 10rem;
+  margin: 1rem;
+}
+
+.profile {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+}
