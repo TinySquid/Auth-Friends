@@ -1,15 +1,17 @@
 import React from 'react'
-// import { withRouter } from 'react-router-dom';
+import { useHistory, useLocation } from 'react-router-dom';
 
 const Nav = ({ logout }) => {
+  let history = useHistory();
+  let location = useLocation();
+
   return (
     <div className="nav">
-      <button>Profile</button>
-      <button>Add Friend</button>
+      <button onClick={() => history.push('/profile')}>Profile</button>
+      <button onClick={() => history.push(`${location.pathname}/addfriend`)}>Add Friend</button>
       <button onClick={logout}>Logout</button>
     </div>
   )
 }
 
-// export default withRouter(Nav)
 export default Nav;
