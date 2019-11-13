@@ -10,12 +10,12 @@ import './App.css';
 function App() {
   return (
     <div className="App">
+      {/* Redirect to profile if already logged in */}
       {
         sessionStorage.getItem('token') ? <Redirect to="/profile" /> : null
       }
 
       <Switch>
-
         <PrivateRoute path="/profile">
           <UserProfile />
         </PrivateRoute>

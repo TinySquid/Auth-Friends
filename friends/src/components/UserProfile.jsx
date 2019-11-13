@@ -1,4 +1,4 @@
-import React from 'react'
+import React from 'react';
 import { withRouter } from 'react-router-dom';
 import PrivateRoute from './PrivateRoute';
 
@@ -8,6 +8,7 @@ import AddFriend from './AddFriend';
 
 const UserProfile = props => {
 
+  //Logout is simply done by removing the token and pushing to history so we redirect.
   const logout = () => {
     sessionStorage.removeItem('token');
     props.history.push('/login');
@@ -28,4 +29,6 @@ const UserProfile = props => {
   )
 }
 
+//Needed to use 'withRouter' so I can access the props.history
+//Could also instead use the useHistory hook.
 export default withRouter(UserProfile);
