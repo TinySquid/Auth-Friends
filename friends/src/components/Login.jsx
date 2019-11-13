@@ -1,15 +1,18 @@
-import React, { useState } from 'react'
+import React, { useState } from 'react';
 
 import axios from 'axios';
 
-const Login = props => {
+const Login = ({ history }) => {
+  //Form input state
   const [inputs, setInputs] = useState({
     username: '',
     password: ''
   });
 
+  //Loader bool to notify user of server activity (login process)
   const [isLoading, setIsLoading] = useState(false)
 
+  //Form input handler
   const handleInput = e => {
     setInputs({
       ...inputs,
@@ -17,26 +20,26 @@ const Login = props => {
     });
   }
 
+  //Form submit handler
   const handleLogin = e => {
     e.preventDefault();
+
+    //Notify user we are logging them in...
     setIsLoading(true);
 
+    //Send payload (username, password)
     axios.post('http://localhost:5000/api/login', inputs)
       .then(response => {
+        //Server will respond with a token in the payload if successful
         if (response.data.payload) {
+          //Store auth token into sessionStorage 
           sessionStorage.setItem('token', response.data.payload);
-          props.history.push('/profile');
+
+          //Redirect to profile
+          history.push('/profile');
         }
       })
       .catch(error => console.log(error))
-    // .finally(() => {
-    //   setIsLoading(false);
-    // });
-
-    // setInputs({
-    //   username: '',
-    //   password: ''
-    // });
   }
 
   return (

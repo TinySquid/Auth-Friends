@@ -1,10 +1,7 @@
 import React from 'react'
-import { useHistory, useLocation } from 'react-router-dom';
+import { withRouter } from 'react-router-dom';
 
-const Nav = ({ logout }) => {
-  //Nav doesn't have access to history or location props from router, so use the hooks provided to gain access.
-  let history = useHistory();
-  let location = useLocation();
+const Nav = ({ logout, history, location }) => {
 
   return (
     <div className="nav">
@@ -15,4 +12,4 @@ const Nav = ({ logout }) => {
   )
 }
 
-export default Nav;
+export default withRouter(Nav);
