@@ -79,7 +79,7 @@ app.post('/api/login', (req, res) => {
 app.get('/api/friends', authenticator, (req, res) => {
   setTimeout(() => {
     res.send(friends);
-  }, 1000);
+  }, 300);
 });
 
 app.get('/api/friends/:id', authenticator, (req, res) => {
@@ -97,7 +97,9 @@ app.post('/api/friends', authenticator, (req, res) => {
 
   friends = [...friends, friend];
 
-  res.send(friends);
+  setTimeout(() => {
+    res.send(friends);
+  }, 100 + (Math.random() * 1000));
 });
 
 app.put('/api/friends/:id', authenticator, (req, res) => {

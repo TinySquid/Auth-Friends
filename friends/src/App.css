@@ -35,6 +35,7 @@
 .nav {
   margin: 1rem;
   border: 1px solid black;
+  width: 880px;
 }
 
 .nav button {
@@ -47,3 +48,37 @@
   justify-content: center;
   flex-direction: column;
 }
+
+.friends {
+  border: 1px solid black;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.friend {
+  width: 40%;
+  margin: 2rem;
+}
+
+.add-friend {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  border: 1px solid black;
+  width: 400px;
+  margin: 0 auto;
+}
+
+.add-friend input {
+  width: 80%;
+  margin: .5rem 0;
+}
+
+.add-friend button {
+  width: 50%;
+  height: 2rem;
+  margin-bottom: 1rem;
+}
+
