@@ -62,22 +62,24 @@ function authenticator(req, res, next) {
 
 app.post('/api/login', (req, res) => {
   const { username, password } = req.body;
-  if (username === 'Lambda School' && password === 'i<3Lambd4') {
-    req.loggedIn = true;
-    res.status(200).json({
-      payload: token
-    });
-  } else {
-    res
-      .status(403)
-      .json({ error: 'Username or Password incorrect. Please see Readme' });
-  }
+  setTimeout(() => {
+    if (username === 'l' && password === 'l') {
+      req.loggedIn = true;
+      res.status(200).json({
+        payload: token
+      });
+    } else {
+      res
+        .status(403)
+        .json({ error: 'Username or Password incorrect. Please see Readme' });
+    }
+  }, 300 + (Math.random() * 1000));
 });
 
 app.get('/api/friends', authenticator, (req, res) => {
   setTimeout(() => {
     res.send(friends);
-  }, 1000);
+  }, 300);
 });
 
 app.get('/api/friends/:id', authenticator, (req, res) => {
@@ -95,7 +97,9 @@ app.post('/api/friends', authenticator, (req, res) => {
 
   friends = [...friends, friend];
 
-  res.send(friends);
+  setTimeout(() => {
+    res.send(friends);
+  }, 100 + (Math.random() * 1000));
 });
 
 app.put('/api/friends/:id', authenticator, (req, res) => {
